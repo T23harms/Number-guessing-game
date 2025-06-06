@@ -9,6 +9,8 @@ const myNumber = document.getElementById('myNumber');
 const reset = document.getElementById('resetButton')
 const reward = document.getElementById('rewardButton');
 const img = document.getElementById('rewardImg');
+const winSound = new Audio('sounds/winsound.wav');
+const jumpscare = new Audio('sounds/jumpscare.wav');
 
 function guessTheNumber() {
     attempts++;
@@ -20,11 +22,12 @@ function guessTheNumber() {
         jsConfetti.addConfetti();   
         
         winCount++;
-        displayWins.innerHTML = 'Gewonnen: ' + winCount;
+        displayWins.innerHTML = 'Wins: ' + winCount + '/3';
 
         if(winCount >= 3) {
             reward.style.display = 'block';
             reset.style.display = 'none';
+            winSound.play();
         } else {
             reset.style.display = 'block';
         }
@@ -54,10 +57,13 @@ function resetGame() {
 
 reward.addEventListener('click', () => {
     img.style.display = 'block';
+    
 
     setTimeout(() => {
         img.classList.add('show');
     }, 50);
+
+    jumpscare.play();
 
     setTimeout(() => {
         img.classList.remove('show');
