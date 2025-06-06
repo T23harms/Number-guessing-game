@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zahl raten</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>Zahl raten Spiel</header>
+    <div class="container">
+        <h1 id="headline">Rate die Zahl!</h1>
+        <h2 id="displayAttempts">Versuche: 0</h2>
+        <form onsubmit="guessTheNumber(); return false;">
+            <input id="myNumber" type="number" required placeholder="Bitte Zahl eingeben...">
+            <button>Raten!</button>
+        </form>
+        <button id="resetButton" style="display: none;">Neustarten</button>
+    </div>
+    <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+</body>
+</html>
