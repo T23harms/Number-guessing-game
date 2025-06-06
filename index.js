@@ -22,7 +22,7 @@ function guessTheNumber() {
         winCount++;
         displayWins.innerHTML = 'Gewonnen: ' + winCount;
 
-        if(winCount >= 1) {
+        if(winCount >= 3) {
             reward.style.display = 'block';
             reset.style.display = 'none';
         } else {
