@@ -1,33 +1,66 @@
-const numberToGuess = Math.round(Math.random() * 100);
+let userGuess = Math.round(Math.random() * 100);
 let attempts = 0;
+let winCount = 0;
 
 const displayAttempts = document.getElementById('displayAttempts');
+const displayWins = document.getElementById('displayWins');
 const headline = document.getElementById('headline');
 const myNumber = document.getElementById('myNumber');
-const resetButton = document.getElementById('resetButton')
+const reset = document.getElementById('resetButton')
+const reward = document.getElementById('rewardButton');
+const img = document.getElementById('rewardImg');
 
 function guessTheNumber() {
-    attempts = attempts + 1;
+    attempts++;
     displayAttempts.innerHTML = 'Versuche: ' + attempts;
 
-    if(numberToGuess == myNumber.value) {
+    if(userGuess == myNumber.value) {
         headline.innerHTML = 'Du hast gewonnen‼️🥳';
         let jsConfetti = new JSConfetti();
         jsConfetti.addConfetti();   
-        resetButton.style.display = 'inline-block';
+        
+        winCount++;
+        displayWins.innerHTML = 'Gewonnen: ' + winCount;
+
+        if(winCount >= 1) {
+            reward.style.display = 'block';
+            reset.style.display = 'none';
+        } else {
+            reset.style.display = 'block';
+        }
     } 
 
-    if(numberToGuess > myNumber.value) {
+    else if(userGuess > myNumber.value) {
         headline.innerHTML = 'Die Zahl ist größer ⬆️';  
     } 
 
-    if(numberToGuess < myNumber.value) {
+    else if(userGuess < myNumber.value) {
         headline.innerHTML = 'Die Zahl ist kleiner ⬇️';   
     } 
 
     myNumber.value = ' '; 
 }
 
-resetButton.addEventListener('click', () => {
-    location.reload();
-});
+reset.addEventListener('click', resetGame);
+
+function resetGame() {
+    userGuess = Math.round(Math.random() * 100);
+    attempts = 0;
+    displayAttempts.innerHTML = 'Versuche: 0';
+    headline.innerHTML = 'Rate die Zahl!';
+    myNumber.value = ' ';
+    reset.style.display = 'none';
+}
+
+reward.addEventListener('click', () => {
+    img.style.display = 'block';
+
+    setTimeout(() => {
+        img.classList.add('show');
+    }, 50);
+
+    setTimeout(() => {
+        img.classList.remove('show');
+        img.style.display = 'none';
+    }, 400);
+})
