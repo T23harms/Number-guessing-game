@@ -61,12 +61,13 @@ reward.addEventListener('click', () => {
 
     setTimeout(() => {
         img.classList.add('show');
+        jumpscare.play();
     }, 50);
 
-    jumpscare.play();
+    
 
     setTimeout(() => {
         img.classList.remove('show');
         img.style.display = 'none';
-    }, 400);
+    }, 800);
 })
