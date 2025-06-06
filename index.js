@@ -23,11 +23,11 @@ function guessTheNumber() {
         
         winCount++;
         displayWins.innerHTML = 'Wins: ' + winCount + '/3';
+        winSound.play();
 
         if(winCount >= 3) {
             reward.style.display = 'block';
             reset.style.display = 'none';
-            winSound.play();
         } else {
             reset.style.display = 'block';
         }
