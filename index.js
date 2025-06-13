@@ -8,9 +8,7 @@ const headline = document.getElementById('headline');
 const myNumber = document.getElementById('myNumber');
 const reset = document.getElementById('resetButton')
 const reward = document.getElementById('rewardButton');
-const img = document.getElementById('rewardImg');
 const winSound = new Audio('sounds/winsound.wav');
-const jumpscare = new Audio('sounds/jumpscare.wav');
 
 function guessTheNumber() {
     attempts++;
@@ -54,20 +52,3 @@ function resetGame() {
     myNumber.value = ' ';
     reset.style.display = 'none';
 }
-
-reward.addEventListener('click', () => {
-    img.style.display = 'block';
-    
-
-    setTimeout(() => {
-        img.classList.add('show');
-        jumpscare.play();
-    }, 50);
-
-    
-
-    setTimeout(() => {
-        img.classList.remove('show');
-        img.style.display = 'none';
-    }, 800);
-})
